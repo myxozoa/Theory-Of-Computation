@@ -8,7 +8,9 @@ const loadFile = () => {
     console.error('Please supply a file to extract phone nums from');
     process.exit(0);
   } else {
-    const data = fs.readFileSync(process.argv[2]);
+    const data = fs.readFileSync(process.argv[2], 'utf-8', (err, data) => {
+      console.log('DATA: ', data);
+    });
     const file = data.toString().split('\n');
 
     let output = '';
